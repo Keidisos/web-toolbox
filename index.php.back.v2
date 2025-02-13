@@ -1,0 +1,66 @@
+<?php
+require 'db.php';
+session_start();
+
+$request = $_SERVER['REQUEST_URI'];
+$base_path = '/webapp';
+$route = str_replace($base_path, '', $request);
+
+switch ($route) {
+    case '/':
+        echo "Page d'accueil";
+        break;
+    case '/register':
+        require 'register.php';
+        break;
+    case '/login':
+        require 'login.php';
+        break;
+    default:
+        http_response_code(404);
+        echo "Page non trouvee";
+        break;
+}
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accueil - WebApp</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        Bienvenue sur WebApp
+    </header>
+    <main>
+        <h1>Accueil</h1>
+        <p>Bienvenue sur notre application web sécurisée. Prenez soin de vos données !</p>
+
+	<!-- Boutons Se connecter / S'inscrire ou message utilisateur -->
+        <div class="user-actions">
+            <?php if (isset($_SESSION['username'])): ?>
+                <p>Bienvenue, <?php echo htmlspecialchars($_SESSION['username']); ?> !</p>
+                <form action="logout.php" method="POST">
+                    <button type="submit">Se déconnecter</button>
+                </form>
+            <?php else: ?>
+                <a href="login.php" class="btn">Se connecter</a>
+                <a href="register.php" class="btn">S'inscrire</a>
+            <?php endif; ?>
+        </div>
+
+        <!-- Carousel -->
+        <div class="carousel">
+            <img src="cyber1.jpg" alt="Astuce 1 : Utilisez des mots de passe forts">
+            <img src="cyber2.jpg" alt="Astuce 2 : Mettez a jour vos logiciels">
+            <img src="cyber3.jpg" alt="Astuce 3 : Activez la double authentification">
+            <img src="cyber4.jpg" alt="Astuce 4 : Attention aux emails suspects">
+        </div>
+    </main>
+    <footer>
+        &copy; 2025 WebApp - Protégez vos données
+    </footer>
+</body>
+</html>

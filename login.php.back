@@ -1,0 +1,46 @@
+<?php
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $username = htmlspecialchars($_POST['username']);
+    $password = $_POST['password'];
+
+    $query = $pdo->prepare("SELECT * FROM users WHERE username = :username");
+    $query->bindParam(':username', $username);
+    $query->execute();
+
+    $user = $query->fetch(PDO::FETCH_ASSOC);
+
+    if ($user && password_verify($password, $user['password'])) {
+        $_SESSION['user_id'] = $user['id'];
+        echo "Connexion reussie !";
+    } else {
+        echo "Identifiants incorrects.";
+    }
+}
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connexion</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        Connexion - WebApp
+    </header>
+    <main>
+        <h1>Connexion</h1>
+        <form method="POST">
+            <label>Identifiant :</label>
+            <input type="text" name="username" required>
+            <label>Mot de passe :</label>
+            <input type="password" name="password" required>
+            <button type="submit">Se connecter</button>
+        </form>
+    </main>
+    <footer>
+        &copy; 2025 WebApp - Protégez vos données
+    </footer>
+</body>
+</html>

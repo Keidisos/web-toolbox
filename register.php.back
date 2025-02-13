@@ -1,0 +1,43 @@
+<?php
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $username = htmlspecialchars($_POST['username']);
+    $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
+
+    $query = $pdo->prepare("INSERT INTO users (username, password) VALUES (:username, :password)");
+    $query->bindParam(':username', $username);
+    $query->bindParam(':password', $password);
+
+    if ($query->execute()) {
+        echo "Inscription reussie !";
+    } else {
+        echo "Erreur lors de l'inscription.";
+    }
+}
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inscription</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        Inscription - WebApp
+    </header>
+    <main>
+        <h1>Inscription</h1>
+        <form method="POST">
+            <label>Nom d'utilisateur :</label>
+            <input type="text" name="username" required>
+            <label>Mot de passe :</label>
+            <input type="password" name="password" required>
+            <button type="submit">S'inscrire</button>
+        </form>
+    </main>
+    <footer>
+        &copy; 2025 WebApp - Protegez vos donnees
+    </footer>
+</body>
+</html>

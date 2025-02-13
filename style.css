@@ -1,0 +1,160 @@
+/* Global Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f9;
+    color: #333;
+}
+
+/* Header */
+header {
+    background-color: #0078d7;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    font-size: 1.5rem;
+}
+
+/* Main Content */
+main {
+    margin: 20px auto;
+    max-width: 800px;
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Forms */
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+form label {
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+form input {
+    margin-top: 5px;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+form button {
+    margin-top: 20px;
+    padding: 10px;
+    font-size: 1rem;
+    background-color: #0078d7;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+form button:hover {
+    background-color: #005bb5;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 10px;
+    margin-top: 20px;
+    background-color: #0078d7;
+    color: white;
+}
+
+/* Carousel */
+.carousel {
+    position: relative;
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
+}
+
+.carousel img {
+    width: 100%;
+    display: none; /* Initialement masqué */
+    animation: fade 1s;
+}
+
+.carousel img.active {
+    display: block; /* Affiche l'image active */
+}
+
+.carousel-text p {
+    display: none; /* Masquer tous les textes par défaut */
+}
+
+.carousel-text p.active {
+    display: block; /* Affiche le texte correspondant à l'image active */
+}
+
+
+/* Boutons */
+.btn {
+    display: inline-block;
+    margin: 10px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    color: white;
+    background-color: #0078d7;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    text-align: center;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: #005bb5;
+}
+
+/* Section actions utilisateur */
+.user-actions {
+    margin: 20px 0;
+    text-align: center;
+}
+
+.user-actions p {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+.test-url-section {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.test-url-section input {
+    padding: 10px;
+    font-size: 1rem;
+    width: 60%;
+    margin-right: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.test-url-section button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    background-color: #4CAF50;
+    color: white;
+}
+
+.test-url-section button:hover {
+    background-color: #45a049;
+}
+
+#urlResult {
+    margin-top: 10px;
+    font-size: 1rem;
+}
