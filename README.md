@@ -29,7 +29,12 @@ CREATE DATABASE webapp_db;
 ```
 2. **Importer la structure**
 ```bash
-mysql -u root -p webapp_db < database.sql
+mysql -u root -p webapp_db < backup_webapp_db.sql
+```
+ou en utilisant le script `import_db.sh`
+```bash
+chmod +x import_db.sh
+./import_db.sh
 ```
 
 ### 4️⃣ Configurer l'application
